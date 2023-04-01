@@ -3,7 +3,6 @@ from flask import Flask, render_template, request, redirect, url_for, send_file
 import os
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'mysecretkey'
 
 
 @app.route('/')
@@ -15,7 +14,6 @@ def home():
 def login():
     username = request.form['username']
     password = request.form['password']
-    # Add your authentication code here
     if username == 'admin' and password == 'password':
         return redirect(url_for('upload'))
     else:
