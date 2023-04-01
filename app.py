@@ -31,12 +31,12 @@ def upload():
 def process():
     f = request.files['file']
     filename = f.filename
-    f.save(os.path.join('tmp', filename))
-    with open(os.path.join('tmp', filename), 'r') as file:
+    f.save(os.path.join('/tmp', filename))
+    with open(os.path.join('/tmp', filename), 'r') as file:
         calendar = ics.Calendar(file.read())
         for event in calendar.events:
             event.name = event.name[7:]
-    with open(os.path.join('tmp', 'modified_' + filename), 'w') as file:
+    with open(os.path.join('/tmp', 'modified_' + filename), 'w') as file:
         file.write(str(calendar))
     return redirect(url_for('download', filename=filename))
 
