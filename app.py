@@ -37,7 +37,7 @@ def process():
         for event in calendar.events:
             event.name = event.name[7:]
     with open(os.path.join("/tmp", 'modified_' + filename), 'w') as file:
-        file.write(str(calendar))
+        file.write(calendar.serialize_iter())
     return redirect(url_for('download', filename=filename))
 
 
